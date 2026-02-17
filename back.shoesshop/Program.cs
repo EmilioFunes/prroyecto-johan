@@ -58,6 +58,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+app.UseCors("AllowAll");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -67,7 +69,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors("AllowAll");
 
 // Static files for uploads
 var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "uploads");
