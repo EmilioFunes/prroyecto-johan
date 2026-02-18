@@ -47,5 +47,26 @@ namespace back.shoesshop.Controllers
             return Ok(new { Token = tokenHandler.WriteToken(token) });
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] LoginModel model)
+        {
+            if (await _context.Users.AnyAsync(u => u.Username == model.Username))
+            {
+                return BadRequest(new { Message = "El usuario ya existe" });
+            }
+
+            var newUser = new User
+            {
+                Username = model.Username,
+                PasswordHash = model.Password, // Manteniendo consistencia con Login (sin hash por ahora)
+                Role = "Guest"
+            };
+
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Usuario registrado exitosamente" });
+        }
+
     }
 }
