@@ -158,7 +158,7 @@ export default function LoginPage() {
                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-3">Credenciales de Prueba</p>
                         <div className="flex justify-center gap-6 text-xs font-bold text-gray-600">
                             <div className="flex flex-col">
-                                <span className="text-primary">Admin</span>
+                                <span className="text-primary">admin</span>
                                 <span>admin123</span>
                             </div>
                             <div className="w-px bg-gray-200 h-8"></div>
